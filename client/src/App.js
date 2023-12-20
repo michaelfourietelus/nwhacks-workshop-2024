@@ -7,7 +7,7 @@ import './App.css';
 const App = () => {
 
 
-
+  
   // Create options for the days of the week dropdown
   const daysOfWeek = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
   const dayOptions = daysOfWeek.map((day, index) => (
