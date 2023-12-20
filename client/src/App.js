@@ -5,37 +5,8 @@ import './App.css';
 
 
 const App = () => {
-  const [sleepData, setSleepData] = useState([]);
-  const [newEntry, setNewEntry] = useState({ day: '', startTime: '', endTime: '', score: '' });
 
-  useEffect(() => {
-    // Fetch sleep data from the MongoDB database
-    const fetchData = async () => {
-      try {
-        const response = await axios.get('/api/sleep'); // Replace with your actual API endpoint
-        setSleepData(response.data);
-      } catch (error) {
-        console.error('Error fetching sleep data', error);
-      }
-    };
 
-    fetchData();
-  }, []);
-
-  const handleNewEntryChange = (e) => {
-    const { name, value } = e.target;
-    setNewEntry({ ...newEntry, [name]: value });
-  };
-
-  const handleNewEntrySubmit = async () => {
-    try {
-      const response = await axios.post('/api/sleep', newEntry); // Replace with your actual API endpoint
-      setSleepData([...sleepData, response.data]);
-      setNewEntry({ day: '', startTime: '', endTime: '', score: '' }); // Reset the form
-    } catch (error) {
-      console.error('Error saving new sleep entry', error);
-    }
-  };
 
   // Create options for the days of the week dropdown
   const daysOfWeek = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
@@ -69,55 +40,9 @@ const App = () => {
       <div className="grid">
         {grid}
       </div>
-      <div className="form">
-        <div className="form-group">
-          <label htmlFor="day">Day:</label>
-          <select
-            id="day"
-            name="day"
-            value={newEntry.day}
-            onChange={handleNewEntryChange}
-            placeholder="Day"
-          >
-            <option value="">Select a day</option>
-            {dayOptions}
-          </select>
-        </div>
-        <div className="form-group">
-          <label htmlFor="startTime">Start Sleep:</label>
-          <input
-            type="time"
-            id="startTime"
-            name="startTime"
-            value={newEntry.startTime}
-            onChange={handleNewEntryChange}
-            placeholder="Start Time"
-          />
-        </div>
-        <div className="form-group">
-          <label htmlFor="endTime">End Sleep:</label>
-          <input
-            type="time"
-            id="endTime"
-            name="endTime"
-            value={newEntry.endTime}
-            onChange={handleNewEntryChange}
-            placeholder="End Time"
-          />
-        </div>
-        <div className="form-group">
-          <label htmlFor="score">Sleep Score:</label>
-          <input
-            type="number"
-            id="score"
-            name="score"
-            value={newEntry.score}
-            onChange={handleNewEntryChange}
-            placeholder="Score"
-          />
-        </div>
-        <button onClick={handleNewEntrySubmit}>Record New Sleep Entry</button>
-      </div>
+      
+      {/* Add page contents here */}
+
     </div>
   );
 };
