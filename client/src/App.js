@@ -1,6 +1,10 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import TELUS_LOGO from './assets/TELUS_LOGO.svg';
+
+import Form from './components/Form';
+import Grid from './components/Grid';
+
 import './App.css';
 
 
@@ -66,58 +70,13 @@ const App = () => {
     <div className="container">
       <img src={TELUS_LOGO} alt="TELUS Logo" className="logo" />
       <h1>Sleep Tracker</h1>
-      <div className="grid">
-        {grid}
-      </div>
-      <div className="form">
-        <div className="form-group">
-          <label htmlFor="day">Day:</label>
-          <select
-            id="day"
-            name="day"
-            value={newEntry.day}
-            onChange={handleNewEntryChange}
-            placeholder="Day"
-          >
-            <option value="">Select a day</option>
-            {dayOptions}
-          </select>
-        </div>
-        <div className="form-group">
-          <label htmlFor="startTime">Start Sleep:</label>
-          <input
-            type="time"
-            id="startTime"
-            name="startTime"
-            value={newEntry.startTime}
-            onChange={handleNewEntryChange}
-            placeholder="Start Time"
-          />
-        </div>
-        <div className="form-group">
-          <label htmlFor="endTime">End Sleep:</label>
-          <input
-            type="time"
-            id="endTime"
-            name="endTime"
-            value={newEntry.endTime}
-            onChange={handleNewEntryChange}
-            placeholder="End Time"
-          />
-        </div>
-        <div className="form-group">
-          <label htmlFor="score">Sleep Score:</label>
-          <input
-            type="number"
-            id="score"
-            name="score"
-            value={newEntry.score}
-            onChange={handleNewEntryChange}
-            placeholder="Score"
-          />
-        </div>
-        <button onClick={handleNewEntrySubmit}>Record New Sleep Entry</button>
-      </div>
+      <Grid sleepData={sleepData} daysOfWeek={daysOfWeek} />
+      <Form
+        newEntry={newEntry}
+        handleNewEntryChange={handleNewEntryChange}
+        dayOptions={dayOptions}
+        handleNewEntrySubmit={handleNewEntrySubmit}
+      />
     </div>
   );
 };
