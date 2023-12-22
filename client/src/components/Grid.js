@@ -7,16 +7,9 @@ const Grid = ({ sleepData, daysOfWeek }) => {
         const dayData = sleepData.find(d => d.day.toLowerCase() === day.toLowerCase());
         return (
           <div key={day} className="day">
-            <h3>{day}</h3>
-            {dayData ? (
-              <>
-                <p>Start Time: {dayData.startTime}</p>
-                <p>End Time: {dayData.endTime}</p>
-                <p>Sleep Score: {dayData.score}</p>
-              </>
-            ) : (
-              <p className="no-data">No data</p>
-            )}
+            
+            {/* Fill out remaining code here */}
+
           </div>
         );
       })}

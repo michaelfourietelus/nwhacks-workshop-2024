@@ -36,24 +36,16 @@ const Form = ({ newEntry, handleNewEntryChange, dayOptions, handleNewEntrySubmit
                 />
             </FormGroup>
             <FormGroup label="End Sleep">
-                <input
-                    type="time"
-                    id="endTime"
-                    name="endTime"
-                    value={newEntry.endTime}
-                    onChange={handleNewEntryChange}
-                    placeholder="End Time"
-                />
+                     
+                {/* Fill out remaining code here */}
+
+            
             </FormGroup>
             <FormGroup label="Sleep Score">
-                <input
-                    type="number"
-                    id="score"
-                    name="score"
-                    value={newEntry.score}
-                    onChange={handleNewEntryChange}
-                    placeholder="Score"
-                />
+                      
+                {/* Fill out remaining code here */}
+
+            
             </FormGroup>
             <button onClick={handleNewEntrySubmit}>Record New Sleep Entry</button>
         </div>
