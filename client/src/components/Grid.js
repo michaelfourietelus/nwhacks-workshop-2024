@@ -10,8 +10,7 @@ const Grid = ({ sleepData, daysOfWeek }) => {
             <h3>{day}</h3>
             {dayData ? (
               <>
-                <p>Start Time: {dayData.startTime}</p>
-                <p>End Time: {dayData.endTime}</p>
+                <p>Sleep Hours: {dayData.hours}</p>
                 <p>Sleep Score: {dayData.score}</p>
               </>
             ) : (

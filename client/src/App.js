@@ -7,23 +7,35 @@ import Grid from './components/Grid';
 
 import './App.css';
 
+import { createSleep, updateSleep, deleteSleep, getSleeps } from './services/sleepService';
 
 const App = () => {
   const [sleepData, setSleepData] = useState([]);
-  const [newEntry, setNewEntry] = useState({ day: '', startTime: '', endTime: '', score: '' });
+  const [newEntry, setNewEntry] = useState({ day: '', hours: '', score: '' });
+
+  // useEffect(() => {
+  //   // Fetch sleep data from the MongoDB database
+  //   const fetchData = async () => {
+  //     try {
+  //       const response = await axios.get('/api/sleep'); // Replace with your actual API endpoint
+  //       setSleepData(response.data);
+  //     } catch (error) {
+  //       console.error('Error fetching sleep data', error);
+  //     }
+  //   };
+
+  //   fetchData();
+  // }, []);
+
+  const getData = async () => {
+    const result = await getSleeps();
+    console.log('starting data', result)
+    setSleepData(result);
+  };
 
   useEffect(() => {
-    // Fetch sleep data from the MongoDB database
-    const fetchData = async () => {
-      try {
-        const response = await axios.get('/api/sleep'); // Replace with your actual API endpoint
-        setSleepData(response.data);
-      } catch (error) {
-        console.error('Error fetching sleep data', error);
-      }
-    };
-
-    fetchData();
+    getData();
+   
   }, []);
 
   const handleNewEntryChange = (e) => {
@@ -55,9 +67,9 @@ const App = () => {
         <h3>{day}</h3>
         {dayData ? (
           <>
-            <p>Start Time: {dayData.startTime}</p>
-            <p>End Time: {dayData.endTime}</p>
-            <p>Sleep Score: {dayData.score}</p>
+            <p>Hours: {dayData.hours}</p>
+            {/* <p>End Time: {dayData.endTime}</p>
+            <p>Sleep Score: {dayData.score}</p> */}
           </>
         ) : (
           <p className="no-data">No data</p>
