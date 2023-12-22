@@ -1,6 +1,7 @@
 const MongoClient = require("mongodb").MongoClient;
 var ObjectID = require("mongodb").ObjectID;
-const url = "add your own url here";
+const url = 'mongodb+srv://username:pw@cluster0.db.mongodb.net/';
+// UPDATE URL
 
 const client = new MongoClient(url);
 

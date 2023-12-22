@@ -1,5 +1,6 @@
 var MongoClient = require('mongodb').MongoClient;
-var url = 'add your own url here';
+var url = 'mongodb+srv://username:pw@cluster0.db.mongodb.net/';
+//UPDATE URL
 
 MongoClient.connect(url, function(err, db) {
   console.log("Starting create mongo");
