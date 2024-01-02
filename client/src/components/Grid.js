@@ -1,6 +1,6 @@
 import React from 'react';
 
-const Grid = ({ sleepData, daysOfWeek }) => {
+const Grid = ({ sleepData, daysOfWeek, clearSleep }) => {
   return (
     <div className="grid">
       {daysOfWeek.map(day => {
@@ -10,9 +10,9 @@ const Grid = ({ sleepData, daysOfWeek }) => {
             <h3>{day}</h3>
             {dayData ? (
               <>
-                <p>Start Time: {dayData.startTime}</p>
-                <p>End Time: {dayData.endTime}</p>
+                <p>Sleep Hours: {dayData.hours}</p>
                 <p>Sleep Score: {dayData.score}</p>
+                <button onClick={() => clearSleep(dayData._id)}>Clear</button>
               </>
             ) : (
               <p className="no-data">No data</p>
