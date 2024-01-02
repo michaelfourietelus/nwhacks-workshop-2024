@@ -30,9 +30,6 @@ router.put("/:id", async (req, res) => {
 });
 
 router.delete("/:id", async (req, res) => {
-  const day = req.body.day;
-  const hours = req.body.hours;
-  const score = req.body.score;
   const id = req.params.id;
   const result = await deleteSleep(id);
   res.send(result);

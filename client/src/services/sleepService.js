@@ -24,17 +24,6 @@ const deleteSleep = async (id) => {
   }
 };
 
-const updateSleep = async (id, day, hours, score) => {
-  let results = {};
-  try {
-    results = await axios.put(`${backendUrl}/sleeps/${id}`, { day: day, hours: hours, score: score });
-    return results.data;
-  } catch (err) {
-    console.log(err);
-    return results;
-  }
-};
-
 const createSleep = async (day, hours, score) => {
   let results = {};
   try {
@@ -46,4 +35,4 @@ const createSleep = async (day, hours, score) => {
   }
 };
 
-export { getSleeps, deleteSleep, updateSleep, createSleep };
+export { getSleeps, deleteSleep, createSleep };

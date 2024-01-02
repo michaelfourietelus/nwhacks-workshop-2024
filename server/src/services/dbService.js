@@ -1,12 +1,11 @@
 const MongoClient = require("mongodb").MongoClient;
 var ObjectID = require("mongodb").ObjectID;
-const url = 'mongodb+srv://username:pw@cluster0.db.mongodb.net/';
-// UPDATE URL
+const url = 'mongodb://localhost:27017/';
 
 const client = new MongoClient(url);
 
 const addValueToDb = async (day, hours, score) => {
-  const insert = async (value) => {
+  const insert = async (day, hours, score) => {
     try {
       await client.connect();
       const database = client.db("mydb");
@@ -20,37 +19,7 @@ const addValueToDb = async (day, hours, score) => {
       await client.close();
     }
   };
-  const result = await insert(value);
-  return result;
-};
-
-const updateValueInDb = async (id, day, hours, score) => {
-  const update = async (id, day, hours, score) => {
-    try {
-      await client.connect();
-      const database = client.db("mydb");
-      const sleeps = database.collection("sleeps");
-      console.log(typeof id);
-
-      const filter = { _id: ObjectID(id) };
-      const options = { upsert: false };
-      const updateDoc = {
-        $set: {
-          day: day,
-          hours: hours,
-          score: score,
-        },
-      };
-      const result = await sleeps.updateOne(filter, updateDoc, options);
-      console.log(
-        `${result.matchedCount} document(s) matched the filter, updated ${result.modifiedCount} document(s)`
-      );
-      return result;
-    } finally {
-      await client.close();
-    }
-  };
-  const result = await update(id, day, hours, score);
+  const result = await insert(day, hours, score);
   return result;
 };
 
@@ -60,7 +29,6 @@ const deleteValueFromDb = async (id) => {
       await client.connect();
       const database = client.db("mydb");
       const sleeps = database.collection("sleeps");
-      console.log(id);
 
       const query = { _id: ObjectID(id) };
 
@@ -87,7 +55,6 @@ const getAllValuesFromDb = async () => {
       const cursor = sleeps.find(query, options);
       const result = [];
       await cursor.forEach((entry) => {
-        console.log(entry);
         result.push(entry);
       });
       return result;
@@ -102,6 +69,5 @@ const getAllValuesFromDb = async () => {
 module.exports = {
   addValueToDb,
   getAllValuesFromDb,
-  updateValueInDb,
   deleteValueFromDb,
 };
