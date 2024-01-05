@@ -1,6 +1,6 @@
 const MongoClient = require("mongodb").MongoClient;
 var ObjectID = require("mongodb").ObjectID;
-const url = 'mongodb://localhost:27017/';
+const url = 'mongodb+srv://michaelfourie:Hasie03@cluster0.jvbnlvh.mongodb.net/?retryWrites=true&w=majority';
 
 const client = new MongoClient(url);
 

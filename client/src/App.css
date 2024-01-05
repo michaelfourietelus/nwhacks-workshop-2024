@@ -1,3 +1,7 @@
+body {
+  font-family: "Helvetica", Arial, sans-serif;
+}
+
 .container {
   max-width: 800px;
   margin: 0 auto;
@@ -27,6 +31,8 @@ h1 {
 .day {
   border: 1px solid black;
   padding: 10px;
+  height: 175px;
+  background: lightgray;
 }
 
 .form {
@@ -41,9 +47,23 @@ h1 {
 
 .form button {
   padding: 10px 20px;
+  background-color: #4CAF50;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 16px;
 }
 
+.form button:hover {
+  background-color: #45a049;
+}
+
+.form button:focus {
+  outline: none;
+}
 .no-data {
   text-align: center;
   color: gray;
+  cursor: pointer;
 }
