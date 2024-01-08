@@ -1,6 +1,6 @@
 import React from 'react';
 
-const Grid = ({ sleepData, daysOfWeek }) => {
+const Grid = ({ sleepData, daysOfWeek, clearSleep }) => {
   return (
     <div className="grid">
       {daysOfWeek.map(day => {
