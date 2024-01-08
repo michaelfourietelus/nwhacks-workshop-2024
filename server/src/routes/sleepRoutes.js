@@ -3,7 +3,6 @@ const router = express.Router();
 const {
   getSleeps,
   addSleep,
-  updateSleep,
   deleteSleep,
 } = require("../controllers/sleepController");
 
