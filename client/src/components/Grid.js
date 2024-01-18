@@ -1,10 +1,11 @@
 import React from 'react';
 
 const Grid = ({ sleepData, daysOfWeek, clearSleep }) => {
+  console.log(sleepData)
   return (
     <div className="grid">
       {daysOfWeek.map(day => {
-        const dayData = sleepData.find(d => d.day.toLowerCase() === day.toLowerCase());
+          const dayData = sleepData.find(d => d.day.toLowerCase() === day.toLowerCase());
         return (
           <div key={day} className="day">
             <h3>{day}</h3>

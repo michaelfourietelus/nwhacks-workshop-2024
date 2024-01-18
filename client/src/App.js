@@ -30,7 +30,7 @@ const App = () => {
     const { name, value } = e.target;
     setNewEntry({ ...newEntry, [name]: value });
     await createSleep(newEntry.day, newEntry.hours, newEntry.score);
-    setNewEntry({ day: "", startTime: "", endTime: "", score: "" }); // Reset the form
+    setNewEntry({ day: "", hours: "", score: "" }); // Reset the form
     await getData();
   };
 
