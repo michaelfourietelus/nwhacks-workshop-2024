@@ -10,27 +10,24 @@ import { createSleep, deleteSleep, getSleeps } from "./services/sleepService";
 
 const App = () => {
   // React Hooks
-
-  // sleepData hook
-  const [sleepData, setSleepData] = useState([]);
-  // newEntry hook
-  const [newEntry, setNewEntry] = useState({ day: "", hours: "", score: "" });
-
-  const getData = async () => {
-    const result = await getSleeps();
-    setSleepData(result);
-  };
+  // sleepData initializes to empty array
+  // newEntry initializes to an object with three variables, day, hours, and score,
+  // all with values of empty strings
+  const [sleepData, setSleepData] = ;
+  const [newEntry, setNewEntry] = ;
 
   // Set the sleepData variable with data from our backend
+  const getData = async () => {
+    const result = await getSleeps();
+    // Assign sleepData with the value of result bellow
+  };
+
   useEffect(() => {
     getData();
   }, []);
 
-  const handleNewEntryChange = (e) => {
-    const { name, value } = e.target;
-    setNewEntry({ ...newEntry, [name]: value });
-  };
 
+  // Create a new sleep entry in the database and update the sleepData variable
   const handleNewEntrySubmit = async (e) => {
     const { name, value } = e.target;
     setNewEntry({ ...newEntry, [name]: value });
@@ -39,6 +36,16 @@ const App = () => {
     await getData();
   };
 
+  // Update the newEntry variable when the user types in the form
+  const handleNewEntryChange = (e) => {
+    // Assign const variables name and value to the value received from the form submission
+    // Use the setNewEntry hook to set the new entry given the name and value
+    // Very similar to handleNewEntrySubmit
+
+  };
+
+
+  // Delete a sleep entry from the database and update the sleepData variable
   const clearSleep = async (index) => {
     await deleteSleep(index);
     await getData();
@@ -54,6 +61,8 @@ const App = () => {
     "Friday",
     "Saturday",
   ];
+
+  // Map each day of the week to anelement for use in a dropdown menu.
   const dayOptions = daysOfWeek.map((day, index) => (
     <option key={index} value={day}>
       {day}
@@ -63,9 +72,12 @@ const App = () => {
   return (
     <div className="container">
       <img src={TELUS_LOGO} alt="TELUS Logo" className="logo" />
-
+      <h1>Sleep Tracker</h1>
       {/* Fill out remaining code here */}
+      {/* // Grid component that has props sleepData, daysOfWeek, and clearSleep */}
       
+      {/* Form component that has props newEntry, dayOptions, handleNewEntryChange, and handleNewEntrySubmit */}
+
     </div>
   );
 };
